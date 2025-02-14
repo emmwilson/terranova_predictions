@@ -171,23 +171,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div class="panel-grid layout-sidebar ms-md-0 layout-sidebar-left">
 <div class="cell panel-sidebar card bg-light p-2 g-col-24 g-col-lg-7">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="32" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 31;"><span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> {vl} <span class="im">from</span> <span class="st">"@vega/vega-lite-api"</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> {aq<span class="op">,</span> op} <span class="im">from</span> <span class="st">"@uwdata/arquero"</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>vg <span class="op">=</span> <span class="pp">require</span>(<span class="st">'vega-lite'</span>)</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>viewof wetted <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>(</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">0</span><span class="op">,</span> <span class="dv">10</span>]<span class="op">,</span> </span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">value</span><span class="op">:</span> <span class="dv">5</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Wetted width ():"</span>}</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>viewof substrate <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>(</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">0</span><span class="op">,</span> <span class="dv">10</span>]<span class="op">,</span> </span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">value</span><span class="op">:</span> <span class="dv">5</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Substrate size ():"</span>}</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>viewof percent <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>(</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">0</span><span class="op">,</span> <span class="dv">20</span>]<span class="op">,</span> </span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">value</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Percent lake ():"</span>}</span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="34" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 33;"><span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> {FileAttachment} <span class="im">from</span> <span class="st">"observablehq:stdlib"</span><span class="op">;</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> {vl} <span class="im">from</span> <span class="st">"@vega/vega-lite-api"</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> {aq<span class="op">,</span> op} <span class="im">from</span> <span class="st">"@uwdata/arquero"</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>vg <span class="op">=</span> <span class="pp">require</span>(<span class="st">'vega-lite'</span>)</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>imageURL_invert <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"/data/invert 2.png"</span>)<span class="op">.</span><span class="fu">url</span>()</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>imageURL_peri <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"/data/periphyton.png"</span>)<span class="op">.</span><span class="fu">url</span>()</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>imageURL_invert_div <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"/data/invert_div.png"</span>)<span class="op">.</span><span class="fu">url</span>()</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>imageURL_par_len <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"/data/par_len.png"</span>)<span class="op">.</span><span class="fu">url</span>()</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>viewof wetted <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>(</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">0</span><span class="op">,</span> <span class="dv">10</span>]<span class="op">,</span> </span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">value</span><span class="op">:</span> <span class="dv">5</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Wetted width ():"</span>}</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>viewof substrate <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>(</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">0</span><span class="op">,</span> <span class="dv">10</span>]<span class="op">,</span> </span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">value</span><span class="op">:</span> <span class="dv">5</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Substrate size ():"</span>}</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>viewof percent <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>(</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">0</span><span class="op">,</span> <span class="dv">20</span>]<span class="op">,</span> </span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">value</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Percent lake ():"</span>}</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-1-1" data-nodetype="declaration">
@@ -230,50 +236,82 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-7" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-8" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-9" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-10" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-11" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
 </div>
 <div class="panel-fill panel-grid g-col-24 g-col-lg-17 pt-3 pt-lg-0">
 <div class="g-col-24">
 <div class="cell panel-fill">
-<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="55" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 54;"><span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">myFunction</span>(wetted<span class="op">,</span> substrate<span class="op">,</span> percent) {</span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> aq<span class="op">.</span><span class="fu">table</span>({</span>
-<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>  <span class="st">'wetted'</span><span class="op">:</span> [wetted<span class="op">,</span> wetted<span class="op">,</span> wetted<span class="op">,</span> wetted]<span class="op">,</span></span>
-<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>  <span class="st">'substrate'</span><span class="op">:</span> [substrate<span class="op">,</span> substrate<span class="op">,</span> substrate<span class="op">,</span> substrate]<span class="op">,</span></span>
-<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>  <span class="st">'percent'</span><span class="op">:</span> [percent<span class="op">,</span> percent<span class="op">,</span> percent<span class="op">,</span> percent]<span class="op">,</span></span>
-<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>  <span class="st">'response_type'</span><span class="op">:</span> [<span class="st">"Invertebrate biomass ()"</span><span class="op">,</span> <span class="st">"Periphyton biomass ()"</span><span class="op">,</span> <span class="st">"Invertebrate diversity"</span><span class="op">,</span> <span class="st">"Par length (cm)"</span>]<span class="op">,</span></span>
-<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>  <span class="st">'response_predict'</span><span class="op">:</span> [<span class="fl">0.83</span><span class="op">-</span><span class="fl">0.095</span><span class="op">*</span>wetted<span class="op">+</span><span class="fl">0.03</span><span class="op">*</span>substrate<span class="op">,</span> <span class="fl">0.44</span><span class="op">+</span><span class="fl">0.026</span><span class="op">*</span>wetted<span class="op">+</span><span class="fl">0.32</span><span class="op">*</span>percent<span class="op">,</span> <span class="fl">0.7</span><span class="op">+</span><span class="fl">0.0016</span><span class="op">*</span>substrate<span class="op">,</span> <span class="fl">0.1</span><span class="op">+</span><span class="fl">0.06</span><span class="op">*</span>wetted]<span class="op">,</span></span>
-<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>  <span class="st">'image_path'</span><span class="op">:</span> [<span class="st">"https://github.com/emmwilson/exploits_predictions/blob/f21d4f3b41a6d8e2b940a71faf2dc37451d0e730/data/invert.png"</span><span class="op">,</span><span class="st">"https://github.com/emmwilson/exploits_predictions/blob/f21d4f3b41a6d8e2b940a71faf2dc37451d0e730/data/embed.png"</span><span class="op">,</span><span class="st">"https://github.com/emmwilson/exploits_predictions/blob/f21d4f3b41a6d8e2b940a71faf2dc37451d0e730/data/invert_div.png"</span><span class="op">,</span><span class="st">"https://github.com/emmwilson/exploits_predictions/blob/f21d4f3b41a6d8e2b940a71faf2dc37451d0e730/data/par_len.png"</span>]</span>
-<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>predictions_ps <span class="op">=</span> <span class="fu">myFunction</span>(wetted<span class="op">,</span> substrate<span class="op">,</span> percent)</span>
-<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>weatherColors <span class="op">=</span> [<span class="st">"darkgray"</span><span class="op">,</span> <span class="st">"steelblue"</span><span class="op">,</span> <span class="st">"paleturquoise"</span><span class="op">,</span> <span class="st">"gold"</span>] </span>
-<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
-<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(width<span class="op">,</span> <span class="dv">550</span>)<span class="op">,</span></span>
-<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>  <span class="dt">height</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>(<span class="fl">0.5</span> <span class="op">*</span> width)<span class="op">,</span></span>
-<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span></span>
-<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marginRight</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span></span>
-<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">150</span><span class="op">,</span></span>
-<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>  <span class="dt">colour</span><span class="op">:</span> {<span class="dt">legend</span><span class="op">:</span> <span class="kw">false</span>}<span class="op">,</span></span>
-<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span><span class="dv">8</span>]<span class="op">,</span> <span class="dt">axis</span><span class="op">:</span> <span class="kw">null</span>}<span class="op">,</span></span>
-<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Response type"</span>}<span class="op">,</span></span>
-<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span>[</span>
-<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">axisX</span>({<span class="dt">fontSize</span><span class="op">:</span> <span class="dv">18</span>})<span class="op">,</span></span>
-<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">barY</span>(predictions_ps<span class="op">,</span></span>
-<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>     {<span class="dt">x</span><span class="op">:</span> <span class="st">"response_type"</span><span class="op">,</span></span>
-<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a>     <span class="dt">y</span><span class="op">:</span> <span class="st">"response_predict"</span><span class="op">,</span></span>
-<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a>     <span class="dt">fill</span><span class="op">:</span> <span class="st">"response_type"</span>})<span class="op">,</span></span>
-<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">text</span>(predictions_ps<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"response_type"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"response_predict"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"response_predict"</span><span class="op">,</span> <span class="dt">dy</span><span class="op">:</span> <span class="op">-</span><span class="dv">7</span><span class="op">,</span> <span class="dt">lineAnchor</span><span class="op">:</span> <span class="st">"bottom"</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">25</span>})<span class="op">,</span></span>
-<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">image</span>(predictions_ps<span class="op">,</span> </span>
-<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>      {<span class="dt">x</span><span class="op">:</span> <span class="st">"response_type"</span><span class="op">,</span></span>
-<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> [<span class="op">-</span><span class="fl">1.2</span><span class="op">,</span> <span class="op">-</span><span class="fl">1.2</span><span class="op">,</span> <span class="op">-</span><span class="fl">1.2</span><span class="op">,</span> <span class="op">-</span><span class="fl">1.2</span>]<span class="op">,</span></span>
-<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a>      <span class="dt">src</span><span class="op">:</span> <span class="st">"image_path"</span><span class="op">,</span></span>
-<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a>      <span class="dt">width</span><span class="op">:</span> <span class="dv">100</span></span>
-<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a>      })</span>
-<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a>   ]</span>
-<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="64" data-source-offset="-2"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 63;"><span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">myFunction</span>(wetted<span class="op">,</span> substrate<span class="op">,</span> percent) {</span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> aq<span class="op">.</span><span class="fu">table</span>({</span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>  <span class="st">'wetted'</span><span class="op">:</span> [wetted<span class="op">,</span> wetted<span class="op">,</span> wetted<span class="op">,</span> wetted]<span class="op">,</span></span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>  <span class="st">'substrate'</span><span class="op">:</span> [substrate<span class="op">,</span> substrate<span class="op">,</span> substrate<span class="op">,</span> substrate]<span class="op">,</span></span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>  <span class="st">'percent'</span><span class="op">:</span> [percent<span class="op">,</span> percent<span class="op">,</span> percent<span class="op">,</span> percent]<span class="op">,</span></span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>  <span class="st">'response_type'</span><span class="op">:</span> [<span class="st">"Invertebrate biomass ()"</span><span class="op">,</span> <span class="st">"Periphyton biomass ()"</span><span class="op">,</span> <span class="st">"Invertebrate diversity"</span><span class="op">,</span> <span class="st">"Par length (cm)"</span>]<span class="op">,</span></span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>  <span class="st">'response_predict'</span><span class="op">:</span> [<span class="fl">0.83</span><span class="op">-</span><span class="fl">0.095</span><span class="op">*</span>wetted<span class="op">+</span><span class="fl">0.03</span><span class="op">*</span>substrate<span class="op">,</span> <span class="fl">0.44</span><span class="op">+</span><span class="fl">0.026</span><span class="op">*</span>wetted<span class="op">+</span><span class="fl">0.32</span><span class="op">*</span>percent<span class="op">,</span> <span class="fl">0.7</span><span class="op">+</span><span class="fl">0.0016</span><span class="op">*</span>substrate<span class="op">,</span> <span class="fl">0.1</span><span class="op">+</span><span class="fl">0.06</span><span class="op">*</span>wetted]<span class="op">,</span></span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>  <span class="st">'image_path'</span><span class="op">:</span> [imageURL_invert<span class="op">,</span> imageURL_peri<span class="op">,</span> imageURL_invert_div<span class="op">,</span> imageURL_par_len]</span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>predictions_ps <span class="op">=</span> <span class="fu">myFunction</span>(wetted<span class="op">,</span> substrate<span class="op">,</span> percent)</span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(width<span class="op">,</span> <span class="dv">550</span>)<span class="op">,</span></span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>  <span class="dt">height</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>(<span class="fl">0.5</span> <span class="op">*</span> width)<span class="op">,</span></span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span></span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marginRight</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span></span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">150</span><span class="op">,</span></span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>  <span class="dt">colour</span><span class="op">:</span> {<span class="dt">legend</span><span class="op">:</span> <span class="kw">false</span>}<span class="op">,</span></span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span><span class="dv">8</span>]<span class="op">,</span> <span class="dt">axis</span><span class="op">:</span> <span class="kw">null</span>}<span class="op">,</span></span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Response type"</span>}<span class="op">,</span></span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span>[</span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">axisX</span>({<span class="dt">fontSize</span><span class="op">:</span> <span class="dv">18</span>})<span class="op">,</span></span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">barY</span>(predictions_ps<span class="op">,</span></span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a>     {<span class="dt">x</span><span class="op">:</span> <span class="st">"response_type"</span><span class="op">,</span></span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a>     <span class="dt">y</span><span class="op">:</span> <span class="st">"response_predict"</span><span class="op">,</span></span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a>     <span class="dt">fill</span><span class="op">:</span> <span class="st">"response_type"</span>})<span class="op">,</span></span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">text</span>(predictions_ps<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"response_type"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"response_predict"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"response_predict"</span><span class="op">,</span> <span class="dt">dy</span><span class="op">:</span> <span class="op">-</span><span class="dv">7</span><span class="op">,</span> <span class="dt">lineAnchor</span><span class="op">:</span> <span class="st">"bottom"</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">25</span>})<span class="op">,</span></span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">image</span>(predictions_ps<span class="op">,</span> </span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a>      {<span class="dt">x</span><span class="op">:</span> <span class="st">"response_type"</span><span class="op">,</span></span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> [<span class="op">-</span><span class="fl">1.3</span><span class="op">,</span> <span class="op">-</span><span class="fl">1.3</span><span class="op">,</span> <span class="op">-</span><span class="fl">1.3</span><span class="op">,</span> <span class="op">-</span><span class="fl">1.3</span>]<span class="op">,</span></span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a>      <span class="dt">src</span><span class="op">:</span> <span class="st">"image_path"</span><span class="op">,</span></span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a>      <span class="dt">width</span><span class="op">:</span> <span class="dv">150</span></span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a>      })</span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a>   ]</span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-2-1" data-nodetype="declaration">
@@ -290,14 +328,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-2-3" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-2-4" data-nodetype="expression">
+<div id="ojs-cell-2-3" data-nodetype="expression">
 
 </div>
 </div>
@@ -325,7 +356,7 @@ W10=
 
 
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxuaW1wb3J0IHt2bH0gZnJvbSBcIkB2ZWdhL3ZlZ2EtbGl0ZS1hcGlcIlxuaW1wb3J0IHthcSwgb3B9IGZyb20gXCJAdXdkYXRhL2FycXVlcm9cIlxuXG52ZyA9IHJlcXVpcmUoJ3ZlZ2EtbGl0ZScpXG5cbnZpZXdvZiB3ZXR0ZWQgPSBJbnB1dHMucmFuZ2UoXG4gIFswLCAxMF0sIFxuICB7dmFsdWU6IDUsIHN0ZXA6IDAuMSwgbGFiZWw6IFwiV2V0dGVkIHdpZHRoICgpOlwifVxuKTtcbnZpZXdvZiBzdWJzdHJhdGUgPSBJbnB1dHMucmFuZ2UoXG4gIFswLCAxMF0sIFxuICB7dmFsdWU6IDUsIHN0ZXA6IDAuMSwgbGFiZWw6IFwiU3Vic3RyYXRlIHNpemUgKCk6XCJ9XG4pO1xudmlld29mIHBlcmNlbnQgPSBJbnB1dHMucmFuZ2UoXG4gIFswLCAyMF0sIFxuICB7dmFsdWU6IDEwLCBzdGVwOiAwLjEsIGxhYmVsOiBcIlBlcmNlbnQgbGFrZSAoKTpcIn1cbik7XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJcbmZ1bmN0aW9uIG15RnVuY3Rpb24od2V0dGVkLCBzdWJzdHJhdGUsIHBlcmNlbnQpIHtcbiAgcmV0dXJuIGFxLnRhYmxlKHtcbiAgJ3dldHRlZCc6IFt3ZXR0ZWQsIHdldHRlZCwgd2V0dGVkLCB3ZXR0ZWRdLFxuICAnc3Vic3RyYXRlJzogW3N1YnN0cmF0ZSwgc3Vic3RyYXRlLCBzdWJzdHJhdGUsIHN1YnN0cmF0ZV0sXG4gICdwZXJjZW50JzogW3BlcmNlbnQsIHBlcmNlbnQsIHBlcmNlbnQsIHBlcmNlbnRdLFxuICAncmVzcG9uc2VfdHlwZSc6IFtcIkludmVydGVicmF0ZSBiaW9tYXNzICgpXCIsIFwiUGVyaXBoeXRvbiBiaW9tYXNzICgpXCIsIFwiSW52ZXJ0ZWJyYXRlIGRpdmVyc2l0eVwiLCBcIlBhciBsZW5ndGggKGNtKVwiXSxcbiAgJ3Jlc3BvbnNlX3ByZWRpY3QnOiBbMC44My0wLjA5NSp3ZXR0ZWQrMC4wMypzdWJzdHJhdGUsIDAuNDQrMC4wMjYqd2V0dGVkKzAuMzIqcGVyY2VudCwgMC43KzAuMDAxNipzdWJzdHJhdGUsIDAuMSswLjA2KndldHRlZF0sXG4gICdpbWFnZV9wYXRoJzogW1wiaHR0cHM6Ly9naXRodWIuY29tL2VtbXdpbHNvbi9leHBsb2l0c19wcmVkaWN0aW9ucy9ibG9iL2YyMWQ0ZjNiNDFhNmQ4ZTJiOTQwYTcxZmFmMmRjMzc0NTFkMGU3MzAvZGF0YS9pbnZlcnQucG5nXCIsXCJodHRwczovL2dpdGh1Yi5jb20vZW1td2lsc29uL2V4cGxvaXRzX3ByZWRpY3Rpb25zL2Jsb2IvZjIxZDRmM2I0MWE2ZDhlMmI5NDBhNzFmYWYyZGMzNzQ1MWQwZTczMC9kYXRhL2VtYmVkLnBuZ1wiLFwiaHR0cHM6Ly9naXRodWIuY29tL2VtbXdpbHNvbi9leHBsb2l0c19wcmVkaWN0aW9ucy9ibG9iL2YyMWQ0ZjNiNDFhNmQ4ZTJiOTQwYTcxZmFmMmRjMzc0NTFkMGU3MzAvZGF0YS9pbnZlcnRfZGl2LnBuZ1wiLFwiaHR0cHM6Ly9naXRodWIuY29tL2VtbXdpbHNvbi9leHBsb2l0c19wcmVkaWN0aW9ucy9ibG9iL2YyMWQ0ZjNiNDFhNmQ4ZTJiOTQwYTcxZmFmMmRjMzc0NTFkMGU3MzAvZGF0YS9wYXJfbGVuLnBuZ1wiXVxufSlcbn1cblxucHJlZGljdGlvbnNfcHMgPSBteUZ1bmN0aW9uKHdldHRlZCwgc3Vic3RyYXRlLCBwZXJjZW50KVxuXG5cbndlYXRoZXJDb2xvcnMgPSBbXCJkYXJrZ3JheVwiLCBcInN0ZWVsYmx1ZVwiLCBcInBhbGV0dXJxdW9pc2VcIiwgXCJnb2xkXCJdIFxuXG5QbG90LnBsb3Qoe1xuICB3aWR0aDogTWF0aC5tYXgod2lkdGgsIDU1MCksXG4gIGhlaWdodDogTWF0aC5mbG9vcigwLjUgKiB3aWR0aCksXG4gIG1hcmdpbkxlZnQ6IDAsXG4gIG1hcmdpblJpZ2h0OiAwLFxuICBtYXJnaW5Cb3R0b206IDE1MCxcbiAgY29sb3VyOiB7bGVnZW5kOiBmYWxzZX0sXG4gIHk6IHtkb21haW46IFswLDhdLCBheGlzOiBudWxsfSxcbiAgeDoge2xhYmVsOiBcIlJlc3BvbnNlIHR5cGVcIn0sXG4gIG1hcmtzOltcbiAgICBQbG90LmF4aXNYKHtmb250U2l6ZTogMTh9KSxcbiAgICBQbG90LmJhclkocHJlZGljdGlvbnNfcHMsXG4gICAgIHt4OiBcInJlc3BvbnNlX3R5cGVcIixcbiAgICAgeTogXCJyZXNwb25zZV9wcmVkaWN0XCIsXG4gICAgIGZpbGw6IFwicmVzcG9uc2VfdHlwZVwifSksXG4gICAgUGxvdC50ZXh0KHByZWRpY3Rpb25zX3BzLCB7eDogXCJyZXNwb25zZV90eXBlXCIsIHk6IFwicmVzcG9uc2VfcHJlZGljdFwiLCB0ZXh0OiBcInJlc3BvbnNlX3ByZWRpY3RcIiwgZHk6IC03LCBsaW5lQW5jaG9yOiBcImJvdHRvbVwiLCBmb250U2l6ZTogMjV9KSxcbiAgICBQbG90LmltYWdlKHByZWRpY3Rpb25zX3BzLCBcbiAgICAgIHt4OiBcInJlc3BvbnNlX3R5cGVcIixcbiAgICAgIHk6IFstMS4yLCAtMS4yLCAtMS4yLCAtMS4yXSxcbiAgICAgIHNyYzogXCJpbWFnZV9wYXRoXCIsXG4gICAgICB3aWR0aDogMTAwXG4gICAgICB9KVxuICAgXVxufSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnd2V0dGVkJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3N1YnN0cmF0ZScpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdwZXJjZW50JykifV19
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxuaW1wb3J0IHtGaWxlQXR0YWNobWVudH0gZnJvbSBcIm9ic2VydmFibGVocTpzdGRsaWJcIjtcbmltcG9ydCB7dmx9IGZyb20gXCJAdmVnYS92ZWdhLWxpdGUtYXBpXCJcbmltcG9ydCB7YXEsIG9wfSBmcm9tIFwiQHV3ZGF0YS9hcnF1ZXJvXCJcblxudmcgPSByZXF1aXJlKCd2ZWdhLWxpdGUnKVxuXG5pbWFnZVVSTF9pbnZlcnQgPSBGaWxlQXR0YWNobWVudChcIi9kYXRhL2ludmVydCAyLnBuZ1wiKS51cmwoKVxuaW1hZ2VVUkxfcGVyaSA9IEZpbGVBdHRhY2htZW50KFwiL2RhdGEvcGVyaXBoeXRvbi5wbmdcIikudXJsKClcbmltYWdlVVJMX2ludmVydF9kaXYgPSBGaWxlQXR0YWNobWVudChcIi9kYXRhL2ludmVydF9kaXYucG5nXCIpLnVybCgpXG5pbWFnZVVSTF9wYXJfbGVuID0gRmlsZUF0dGFjaG1lbnQoXCIvZGF0YS9wYXJfbGVuLnBuZ1wiKS51cmwoKVxuXG52aWV3b2Ygd2V0dGVkID0gSW5wdXRzLnJhbmdlKFxuICBbMCwgMTBdLCBcbiAge3ZhbHVlOiA1LCBzdGVwOiAwLjEsIGxhYmVsOiBcIldldHRlZCB3aWR0aCAoKTpcIn1cbik7XG52aWV3b2Ygc3Vic3RyYXRlID0gSW5wdXRzLnJhbmdlKFxuICBbMCwgMTBdLCBcbiAge3ZhbHVlOiA1LCBzdGVwOiAwLjEsIGxhYmVsOiBcIlN1YnN0cmF0ZSBzaXplICgpOlwifVxuKTtcbnZpZXdvZiBwZXJjZW50ID0gSW5wdXRzLnJhbmdlKFxuICBbMCwgMjBdLCBcbiAge3ZhbHVlOiAxMCwgc3RlcDogMC4xLCBsYWJlbDogXCJQZXJjZW50IGxha2UgKCk6XCJ9XG4pO1xuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0yIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiXG5cbmZ1bmN0aW9uIG15RnVuY3Rpb24od2V0dGVkLCBzdWJzdHJhdGUsIHBlcmNlbnQpIHtcbiAgcmV0dXJuIGFxLnRhYmxlKHtcbiAgJ3dldHRlZCc6IFt3ZXR0ZWQsIHdldHRlZCwgd2V0dGVkLCB3ZXR0ZWRdLFxuICAnc3Vic3RyYXRlJzogW3N1YnN0cmF0ZSwgc3Vic3RyYXRlLCBzdWJzdHJhdGUsIHN1YnN0cmF0ZV0sXG4gICdwZXJjZW50JzogW3BlcmNlbnQsIHBlcmNlbnQsIHBlcmNlbnQsIHBlcmNlbnRdLFxuICAncmVzcG9uc2VfdHlwZSc6IFtcIkludmVydGVicmF0ZSBiaW9tYXNzICgpXCIsIFwiUGVyaXBoeXRvbiBiaW9tYXNzICgpXCIsIFwiSW52ZXJ0ZWJyYXRlIGRpdmVyc2l0eVwiLCBcIlBhciBsZW5ndGggKGNtKVwiXSxcbiAgJ3Jlc3BvbnNlX3ByZWRpY3QnOiBbMC44My0wLjA5NSp3ZXR0ZWQrMC4wMypzdWJzdHJhdGUsIDAuNDQrMC4wMjYqd2V0dGVkKzAuMzIqcGVyY2VudCwgMC43KzAuMDAxNipzdWJzdHJhdGUsIDAuMSswLjA2KndldHRlZF0sXG4gICdpbWFnZV9wYXRoJzogW2ltYWdlVVJMX2ludmVydCwgaW1hZ2VVUkxfcGVyaSwgaW1hZ2VVUkxfaW52ZXJ0X2RpdiwgaW1hZ2VVUkxfcGFyX2xlbl1cbn0pXG59XG5cbnByZWRpY3Rpb25zX3BzID0gbXlGdW5jdGlvbih3ZXR0ZWQsIHN1YnN0cmF0ZSwgcGVyY2VudClcblxuUGxvdC5wbG90KHtcbiAgd2lkdGg6IE1hdGgubWF4KHdpZHRoLCA1NTApLFxuICBoZWlnaHQ6IE1hdGguZmxvb3IoMC41ICogd2lkdGgpLFxuICBtYXJnaW5MZWZ0OiAwLFxuICBtYXJnaW5SaWdodDogMCxcbiAgbWFyZ2luQm90dG9tOiAxNTAsXG4gIGNvbG91cjoge2xlZ2VuZDogZmFsc2V9LFxuICB5OiB7ZG9tYWluOiBbMCw4XSwgYXhpczogbnVsbH0sXG4gIHg6IHtsYWJlbDogXCJSZXNwb25zZSB0eXBlXCJ9LFxuICBtYXJrczpbXG4gICAgUGxvdC5heGlzWCh7Zm9udFNpemU6IDE4fSksXG4gICAgUGxvdC5iYXJZKHByZWRpY3Rpb25zX3BzLFxuICAgICB7eDogXCJyZXNwb25zZV90eXBlXCIsXG4gICAgIHk6IFwicmVzcG9uc2VfcHJlZGljdFwiLFxuICAgICBmaWxsOiBcInJlc3BvbnNlX3R5cGVcIn0pLFxuICAgIFBsb3QudGV4dChwcmVkaWN0aW9uc19wcywge3g6IFwicmVzcG9uc2VfdHlwZVwiLCB5OiBcInJlc3BvbnNlX3ByZWRpY3RcIiwgdGV4dDogXCJyZXNwb25zZV9wcmVkaWN0XCIsIGR5OiAtNywgbGluZUFuY2hvcjogXCJib3R0b21cIiwgZm9udFNpemU6IDI1fSksXG4gICAgUGxvdC5pbWFnZShwcmVkaWN0aW9uc19wcywgXG4gICAgICB7eDogXCJyZXNwb25zZV90eXBlXCIsXG4gICAgICB5OiBbLTEuMywgLTEuMywgLTEuMywgLTEuM10sXG4gICAgICBzcmM6IFwiaW1hZ2VfcGF0aFwiLFxuICAgICAgd2lkdGg6IDE1MFxuICAgICAgfSlcbiAgIF1cbn0pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3dldHRlZCcpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdzdWJzdHJhdGUnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgncGVyY2VudCcpIn1dfQ==
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }

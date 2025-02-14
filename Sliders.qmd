@@ -23,16 +23,24 @@ library(tidyverse)
 library(httr)
 library(htmltools)
 library(glue)
+
+
 ```
 
 ```{ojs}
 //| echo: false
 //| panel: sidebar
 
+import {FileAttachment} from "observablehq:stdlib";
 import {vl} from "@vega/vega-lite-api"
 import {aq, op} from "@uwdata/arquero"
 
 vg = require('vega-lite')
+
+imageURL_invert = FileAttachment("/data/invert 2.png").url()
+imageURL_peri = FileAttachment("/data/periphyton.png").url()
+imageURL_invert_div = FileAttachment("/data/invert_div.png").url()
+imageURL_par_len = FileAttachment("/data/par_len.png").url()
 
 viewof wetted = Inputs.range(
   [0, 10], 
@@ -52,6 +60,7 @@ viewof percent = Inputs.range(
 //| echo: false
 //| panel: fill
 
+
 function myFunction(wetted, substrate, percent) {
   return aq.table({
   'wetted': [wetted, wetted, wetted, wetted],
@@ -59,14 +68,11 @@ function myFunction(wetted, substrate, percent) {
   'percent': [percent, percent, percent, percent],
   'response_type': ["Invertebrate biomass ()", "Periphyton biomass ()", "Invertebrate diversity", "Par length (cm)"],
   'response_predict': [0.83-0.095*wetted+0.03*substrate, 0.44+0.026*wetted+0.32*percent, 0.7+0.0016*substrate, 0.1+0.06*wetted],
-  'image_path': ["https://github.com/emmwilson/exploits_predictions/blob/f21d4f3b41a6d8e2b940a71faf2dc37451d0e730/data/invert.png","https://github.com/emmwilson/exploits_predictions/blob/f21d4f3b41a6d8e2b940a71faf2dc37451d0e730/data/embed.png","https://github.com/emmwilson/exploits_predictions/blob/f21d4f3b41a6d8e2b940a71faf2dc37451d0e730/data/invert_div.png","https://github.com/emmwilson/exploits_predictions/blob/f21d4f3b41a6d8e2b940a71faf2dc37451d0e730/data/par_len.png"]
+  'image_path': [imageURL_invert, imageURL_peri, imageURL_invert_div, imageURL_par_len]
 })
 }
 
 predictions_ps = myFunction(wetted, substrate, percent)
-
-
-weatherColors = ["darkgray", "steelblue", "paleturquoise", "gold"] 
 
 Plot.plot({
   width: Math.max(width, 550),
@@ -86,9 +92,9 @@ Plot.plot({
     Plot.text(predictions_ps, {x: "response_type", y: "response_predict", text: "response_predict", dy: -7, lineAnchor: "bottom", fontSize: 25}),
     Plot.image(predictions_ps, 
       {x: "response_type",
-      y: [-1.2, -1.2, -1.2, -1.2],
+      y: [-1.3, -1.3, -1.3, -1.3],
       src: "image_path",
-      width: 100
+      width: 150
       })
    ]
 })
