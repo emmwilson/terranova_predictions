@@ -4,9 +4,9 @@ theme: sandstone
 format:
   html:
     grid:
-      sidebar-width: 5px
-      margin-width: 5px
-      body-width: 2000px
+      sidebar-width: 10px
+      margin-width: 10px
+      body-width: 1900px
 date: last-modified
 date-format: "DD/MM/YY"
 ---
