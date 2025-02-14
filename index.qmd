@@ -13,9 +13,9 @@ date-format: "DD/MM/YY"
 
 Use the top navigation bar to explore the following outputs:
 
-About slider predictions:
+Slider predictions: about...
 
-About map predictions:
+Map predictions: about...
 
 ------------------------------------------------------------------------
 
@@ -26,3 +26,5 @@ Authors:
 Affiliations:
 
 Funding:
+
+App developement: Emmerson Wilson

@@ -34,23 +34,28 @@ import {aq, op} from "@uwdata/arquero"
 
 vg = require('vega-lite')
 
+// references to images stored in data folder for each response variable
 imageURL_invert = FileAttachment("/data/invert 2.png").url()
 imageURL_peri = FileAttachment("/data/periphyton.png").url()
 imageURL_invert_div = FileAttachment("/data/invert_div.png").url()
 imageURL_par_len = FileAttachment("/data/par_len.png").url()
 
+// sliders for predictor variables
 
+// example: wetted width
 viewof wetted = Inputs.range(
   [0, 10], 
-  {value: 5, step: 0.1, label: "Wetted width ():"}
+  {value: 5, step: 0.1, label: "Wetted width (units):"}
 );
+// example: substrate size
 viewof substrate = Inputs.range(
   [0, 10], 
-  {value: 5, step: 0.1, label: "Substrate size ():"}
+  {value: 5, step: 0.1, label: "Substrate size (units):"}
 );
+// example: percent lakes
 viewof percent = Inputs.range(
   [0, 20], 
-  {value: 10, step: 0.1, label: "Percent lake ():"}
+  {value: 10, step: 0.1, label: "Percent lake (units):"}
 );
 ```
 
@@ -58,24 +63,27 @@ viewof percent = Inputs.range(
 //| echo: false
 //| panel: fill
 
-
+// function that takes input from sliders and creates prediction of each response variable
 function myFunction(wetted, substrate, percent) {
   return aq.table({
   'wetted': [wetted, wetted, wetted, wetted],
   'substrate': [substrate, substrate, substrate, substrate],
   'percent': [percent, percent, percent, percent],
-  'response_type': ["Invertebrate biomass ()", "Periphyton biomass ()", "Invertebrate diversity", "Par length (cm)"],
+  'response_type': ["Invertebrate biomass (units)", "Invertebrate diversity", "Par length (cm)", "Periphyton biomass (units)"], // ordered alphabetically
   'response_predict': [0.83-0.095*wetted+0.03*substrate, 0.44+0.026*wetted+0.32*percent, 0.7+0.0016*substrate, 0.1+0.06*wetted]
   })
 }
 
+// create the table
 predictions_ps = myFunction(wetted, substrate, percent)
 
+// create a table that stores the image paths
 images = aq.table({
-  'response_type': ["invert", "invert_d", "par", "peri"],
-  'image_path': [imageURL_invert, imageURL_invert_div, imageURL_par_len, imageURL_peri]
+  'response_type': ["Invertebrate biomass ()", "Invertebrate diversity", "Par length (cm)", "Periphyton biomass ()"], // ordered alphabetically
+  'image_path': [imageURL_invert, imageURL_invert_div, imageURL_par_len, imageURL_peri] //order these to match alphabetically ordered response variables (response_type)
 })
 
+// create the bar plot based on predictions_ps
 Plot.plot({
   width: Math.max(width, 550),
   height: Math.floor(0.4 * width),
@@ -94,6 +102,7 @@ Plot.plot({
    ]
 })
 
+// add images below each bar
 Plot.plot({
   width: Math.max(width, 550),
   height: Math.floor(0.1 * width),
