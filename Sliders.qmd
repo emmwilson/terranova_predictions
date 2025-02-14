@@ -74,15 +74,19 @@ function myFunction(wetted, substrate, percent) {
 
 predictions_ps = myFunction(wetted, substrate, percent)
 
+images = aq.table({
+  'response_type': ["invert", "invert_d", "par", "peri"],
+  'image_path': [imageURL_invert, imageURL_invert_div, imageURL_par_len, imageURL_peri]
+})
+
 Plot.plot({
   width: Math.max(width, 550),
-  height: Math.floor(0.5 * width),
+  height: Math.floor(0.4 * width),
   marginLeft: 0,
   marginRight: 0,
-  marginBottom: 150,
   colour: {legend: false},
   y: {domain: [0,8], axis: null},
-  x: {label: "Response type"},
+  x: {label: null},
   marks:[
     Plot.axisX({fontSize: 18}),
     Plot.barY(predictions_ps,
@@ -90,11 +94,24 @@ Plot.plot({
      y: "response_predict",
      fill: "response_type"}),
     Plot.text(predictions_ps, {x: "response_type", y: "response_predict", text: "response_predict", dy: -7, lineAnchor: "bottom", fontSize: 25}),
-    Plot.image(predictions_ps, 
+   ]
+})
+
+Plot.plot({
+  width: Math.max(width, 550),
+  height: Math.floor(0.1 * width),
+  marginLeft: 0,
+  marginRight: 0,
+  colour: {legend: false},
+  y: {domain: [0,0], axis: null},
+  x: {label: "Response type", axis: null, fontSize: 22},
+  marks:[
+    Plot.image(images, 
       {x: "response_type",
-      y: [-1.3, -1.3, -1.3, -1.3],
+      y: [0, 0, 0, 0],
       src: "image_path",
-      width: 150
+      width: 150,
+      axis: null
       })
    ]
 })
