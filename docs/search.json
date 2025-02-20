@@ -341,5 +341,12 @@
     "title": "Tutorial",
     "section": "Congrats! You’ve customized the webpage!",
     "text": "Congrats! You’ve customized the webpage!"
+  },
+  {
+    "objectID": "tutorial.html#extra-resources",
+    "href": "tutorial.html#extra-resources",
+    "title": "Tutorial",
+    "section": "extra resources",
+    "text": "extra resources\nQuarto:\nbasics of quarto pages: https://quarto.org/docs/websites/ info on using quarto and GitPages: https://quarto.org/docs/publishing/github-pages.html\nfor sliders\nusing observable js with quarto: https://quarto.org/docs/dashboards/interactivity/observable.html all the options available with Plot: https://observablehq.com/plot/what-is-plot going from ggplot to Plot: https://observablehq.com/@observablehq/plot-from-ggplot2\nusing leaflet\nhow to use leaflet to make maps in R: https://rstudio.github.io/leaflet/articles/leaflet.html"
   }
 ]

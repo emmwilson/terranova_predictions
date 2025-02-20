@@ -407,6 +407,7 @@ predictions_ps = myFunction(wetted, substrate, percent)
 <iframe width="1500" height="700" src="https://emmwilson.github.io/exploits_predictions/Sliders.html" title="Webpage example"></iframe>
 ```
 
+
 ## Map
 Creates a map of the Exploits Watershed with predicted levels of response variables for each reach that has been sampled.
 
@@ -718,3 +719,18 @@ and you should have the option to visit the site
 
 
 ## Congrats! You've customized the webpage!
+
+
+## extra resources
+
+### Quarto:
+basics of quarto pages: <https://quarto.org/docs/websites/>
+info on using quarto and GitPages: <https://quarto.org/docs/publishing/github-pages.html>
+
+### for sliders
+using observable js with quarto: <https://quarto.org/docs/dashboards/interactivity/observable.html>
+all the options available with Plot: <https://observablehq.com/plot/what-is-plot>
+going from ggplot to Plot: <https://observablehq.com/@observablehq/plot-from-ggplot2>
+
+### using leaflet
+how to use leaflet to make maps in R: <https://rstudio.github.io/leaflet/articles/leaflet.html>
