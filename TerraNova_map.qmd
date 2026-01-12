@@ -1,0 +1,160 @@
+---
+title: "Terra Nova River watershed predictions"
+theme: sandstone
+format:
+  html:
+    grid:
+      sidebar-width: 10px
+      margin-width: 10px
+      body-width: 1900px
+---
+
+
+HydroATLAS data that can be used in gravel models to estimate gravel with the proper size for salmon spawning.
+
+Click on a reach to see the data for each segment.
+
+
+```{r, library}
+#| include: false
+
+pacman::p_load(shiny,
+               bslib,
+               ggplot2,
+               ggtext,
+               shinythemes,
+               thematic,
+               tidyverse,
+               httr,
+               leaflet,
+               leafem,
+               terra,
+               htmltools,
+               glue,
+               cowplot)
+```
+
+```{r, import}
+#| include: false
+# import layers
+  ## river extent
+  TN_drainage <- vect("data/spatial data/Terranova_basin.shp") |>  
+    project("EPSG:4326 - WGS 84")
+  
+  ## all rivers
+  TN_river <- vect("data/spatial data/Terranova_rivers.shp") |>  
+    project("EPSG:4326 - WGS 84")
+  
+  ## lakes
+  TN_lakes <- vect("data/spatial data/Terranova_lakes.shp") |>  
+    project("EPSG:4326 - WGS 84")
+  
+  
+  # import arrow
+arrow <- "https://cdn.pixabay.com/photo/2013/07/12/17/54/arrow-152596_960_720.png"
+```
+
+```{r, predictions}
+#| include: false
+# use river reach data to predict outcomes
+  # predictions_reaches <- field_reaches
+  #   ## predict responses based on data from field at each reach
+  # predictions_reaches$invert <- 0.43-0.015*predictions_reaches$avg_wet_wi+0.03*predictions_reaches$D50_pred  ## input your own formulas here
+  # predictions_reaches$embed <- 0.43-0.015*predictions_reaches$avg_wet_wi+0.03*predictions_reaches$D50_pred
+  # 
+```
+
+```{r, palettes}
+#| include: false
+ #colour palettes for predictions
+  # invert.pal <- colorNumeric(c("#f47c3c", "#d9534f"), domain = predictions_reaches$invert, na.color = "transparent")
+  # embed.pal <- colorNumeric(c("#e9c602", "#93c54b"), domain =  predictions_reaches$embed, na.color = "transparent")
+
+  # colour palette for watershed
+  discharge.pal <- colorNumeric(c("#dfdce3", "#8900a8"), domain = TN_river$DIS_AV_CMS, na.color = "transparent")
+  
+  order.pal <- colorFactor(c("#d4021d", "#f2ca97"), domain = TN_river$ORD_CLAS, na.color = "transparent") # use this function for any categorical data you want to include in the map
+
+  catchment.pal <- colorNumeric(c("#e9c602", "#00b80c"), domain = TN_river$UPLAND_SKM, na.color = "transparent")
+```
+
+```{r, popup_labels}
+#| include: false
+# adds information to popups for each reach wehn it is selected
+
+  label_text <- glue("<b><u>{'Stream info:'}</u></b> <br/>",
+"<b>Segment discharge: </b> {TN_river$DIS_AV_CMS}<br/>",
+"<b>Segment stream order: </b> {TN_river$ORD_CLAS}<br/>",
+"<b>Segment Catchment: </b> {TN_river$UPLAND_SKM}<br/>") |> 
+
+  lapply(htmltools::HTML)
+```
+
+```{r, map}
+#| echo: false
+
+TN_map <- leaflet(width = 1900, height = 2100) |> 
+      addProviderTiles('Esri.WorldImagery') |> # adds base map
+
+      # open map to this screen
+      setView(-54.51951,48.30108, zoom = 11) |> 
+      #can recenter to that location by clicking button
+      addHomeButton(ext = c(-55.13126, 48.44568, -54.02385, 48.03565), position = "topleft", group = "Recenter") |> 
+      # create layers to add vectors to
+      addMapPane("drainage", zIndex = 410) |> 
+      addMapPane("river", zIndex = 415) |> 
+      addMapPane("reaches", zIndex = 425) |> 
+      addMapPane("lakes", zIndex = 420) |>
+      # add polygons and lines
+      ## exploits drainage area
+      addPolygons(data = TN_drainage, color = "#1f78b4", weight = 1.25, fillColor = "#1f78b4", fillOpacity = 0.2, options = pathOptions(pane = "drainage")) |>
+  
+      ## rivers of the rocky
+      addPolylines(data = TN_river, color = "#1f78b4", weight = 3/TN_river$ORD_CLAS, options = pathOptions(pane = "river"), group = "TN") |>
+
+      ### discharge
+      addPolylines(data = TN_river, color = ~discharge.pal(TN_river$DIS_AV_CMS), weight = 3/TN_river$ORD_CLAS, opacity = 1, options = pathOptions(pane = "reaches"), group = "Discharge", popup = ~label_text) |>
+      addLegend(pal = discharge.pal, values = TN_river$DIS_AV_CMS,
+                title = "Discharge (m<sup>3</sup>/s)",
+                group = "Discharge", opacity = 1) |> 
+  
+      ### order
+      addPolylines(data = TN_river, color = ~order.pal(TN_river$ORD_CLAS), weight = 3/TN_river$ORD_CLAS, opacity = 1, options = pathOptions(pane = "reaches"), group = "Order", popup = ~label_text) |>
+      addLegend(pal = order.pal, values = TN_river$ORD_CLAS,
+                title = "Stream order",
+                group = "Order", opacity = 1) |>
+  
+      ### catchment area
+      addPolylines(data = TN_river, color = ~catchment.pal(TN_river$UPLAND_SKM), weight = 3/TN_river$ORD_CLAS, opacity = 1, options = pathOptions(pane = "reaches"), group = "Catchment", popup = ~label_text) |>
+      addLegend(pal = catchment.pal, values = TN_river$UPLAND_SKM,
+                title = "Catchment area (km<sup>2</sup>)",
+                group = "Catchment", opacity = 1) |>
+  
+      ## lakes of the exploits
+      addPolygons(data = TN_lakes, color = "#1f78b4", stroke = FALSE, fillOpacity = 0.7, options = pathOptions(pane = "lakes"), group = "TN") |>
+  
+      ## predictions of invertebrate biomass
+      # addPolylines(data = predictions_reaches, color = ~invert.pal(predictions_reaches$invert), weight = 2, options = pathOptions(pane = "reaches"), group = "Invertebrate Biomass", popup = ~label_text) |> 
+      # addLegend(pal = invert.pal, values = predictions_reaches$invert,
+      #           title = "Invertebrate Biomass",
+      #           group = "Invertebrate Biomass", opacity = 1) |> 
+  
+      ## predictions of embededness
+      # addPolylines(data = predictions_reaches, color = ~embed.pal(predictions_reaches$embed), weight = 2, options = pathOptions(pane = "reaches"), group = "Embededness", popup = ~label_text) |> 
+      # addLegend(pal = embed.pal, values = predictions_reaches$embed,
+      #           title = "Embededness",
+      #           group = "Embededness", opacity = 1) |> 
+  
+      # ability to choose which predictions to see
+      addLayersControl(overlayGroups = c("Discharge", "Order", "Catchment"), position = "topleft", options = layersControlOptions(collapsed = F)) |>
+      htmlwidgets::onRender("
+        function() {
+            $('.leaflet-control-layers-overlays').prepend('<label style=\"text-align:left\">Available layers</label>');
+        }
+    ")  |>
+  
+  addScaleBar(position = "bottomright") |> 
+  addLogo(arrow)
+
+TN_map
+```

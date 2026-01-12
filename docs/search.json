@@ -52,8 +52,8 @@
     "objectID": "tutorial.html#content",
     "href": "tutorial.html#content",
     "title": "Tutorial",
-    "section": "Content",
-    "text": "Content\nThis presentation will walk through using and customizing the “exploits_predictions” GitPage\n\nUsing Github\nParts of a Quarto Webpage\nThe website itself!\n\nHome tab\nSlider tab\nMap tab\n\nGetting it online"
+    "section": "",
+    "text": "This presentation will walk through using and customizing the “exploits_predictions” GitPage\n\nUsing Github\nParts of a Quarto Webpage\nThe website itself!\n\nHome tab\nSlider tab\nMap tab\n\nGetting it online"
   },
   {
     "objectID": "tutorial.html#qmd-files",
@@ -74,7 +74,7 @@
     "href": "tutorial.html#others",
     "title": "Tutorial",
     "section": "others",
-    "text": "others\nThere are also other files that are important to building a quarto webpage:\n\nstyles.css\n_extensions folder\n_site folder\netc…\n\n\nBut we don’t need to alter any of them so we will skip over"
+    "text": "others\nThere are also other files that are important to building a quarto webpage:\n\nstyles.css\n_extensions folder\n_site folder\netc…\n\n. . .\nBut we don’t need to alter any of them so we will skip over"
   },
   {
     "objectID": "tutorial.html#repositories",
@@ -284,7 +284,7 @@
     "href": "tutorial.html",
     "title": "Tutorial",
     "section": "",
-    "text": "This presentation will walk through using and customizing the “exploits_predictions” GitPage\n\nUsing Github\nParts of a Quorto Webpage\nThe website itself!\n\nHome tab\nSlider tab\nMap tab\n\nGetting it online"
+    "text": "This presentation will walk through using and customizing the “exploits_predictions” GitPage\n\nUsing Github\nParts of a Quarto Webpage\nThe website itself!\n\nHome tab\nSlider tab\nMap tab\n\nGetting it online"
   },
   {
     "objectID": "tutorial.html#a-few-things-you-need-first",
@@ -319,7 +319,7 @@
     "href": "tutorial.html#commit-and-push-1",
     "title": "Tutorial",
     "section": "Commit and Push",
-    "text": "Commit and Push\n\n\nCommit:\n\n\n\n\n\n\n\n\n\n\n\nSelect the files and folders that show up in the top left console\n\n\n\n\n\n\n\n\n\nAdd a commit message and select “Commit”\n\n\n\n\n\n** Important ** There is a limit to how much you can commit and push at one time!\nIf you are adding any spatial data, do a seperate commit and push for that file\nAnd be conservative about how much you commit at one time\n\n\nAfter it has finished with the commit click Push"
+    "text": "Commit and Push\n\n\nCommit:\n\n\n\n\n\n\n\n\nSelect the files and folders that show up in the top left console\n\n\n\n\n\n\n\n\n\nAdd a commit message and select “Commit”\n\n\n\n\n\n** Important ** There is a limit to how much you can commit and push at one time!\nIf you are adding any spatial data, do a seperate commit and push for that file\nAnd be conservative about how much you commit at one time\n\n\n\nAfter it has finished with the commit click Push"
   },
   {
     "objectID": "tutorial.html#commit-and-push-2",
@@ -347,6 +347,34 @@
     "href": "tutorial.html#extra-resources",
     "title": "Tutorial",
     "section": "extra resources",
-    "text": "extra resources\nQuarto:\nbasics of quarto pages: https://quarto.org/docs/websites/ info on using quarto and GitPages: https://quarto.org/docs/publishing/github-pages.html\nfor sliders\nusing observable js with quarto: https://quarto.org/docs/dashboards/interactivity/observable.html all the options available with Plot: https://observablehq.com/plot/what-is-plot going from ggplot to Plot: https://observablehq.com/@observablehq/plot-from-ggplot2\nusing leaflet\nhow to use leaflet to make maps in R: https://rstudio.github.io/leaflet/articles/leaflet.html"
+    "text": "extra resources\n\nQuarto:\nbasics of quarto pages: https://quarto.org/docs/websites/ info on using quarto and GitPages: https://quarto.org/docs/publishing/github-pages.html\n\n\nfor sliders\nusing observable js with quarto: https://quarto.org/docs/dashboards/interactivity/observable.html all the options available with Plot: https://observablehq.com/plot/what-is-plot going from ggplot to Plot: https://observablehq.com/@observablehq/plot-from-ggplot2\n\n\nusing leaflet\nhow to use leaflet to make maps in R: https://rstudio.github.io/leaflet/articles/leaflet.html"
+  },
+  {
+    "objectID": "TerraNova_map.html",
+    "href": "TerraNova_map.html",
+    "title": "Terra Nova River watershed predictions",
+    "section": "",
+    "text": "HydroATLAS data that can be used in gravel models to estimate gravel with the proper size for salmon spawning.\nClick on a reach to see the data for each segment."
+  },
+  {
+    "objectID": "data/spatial data/Terranova_rivers.html",
+    "href": "data/spatial data/Terranova_rivers.html",
+    "title": "Salmon resource predictions",
+    "section": "",
+    "text": "&lt;!DOCTYPE qgis PUBLIC ‘http://mrcc.com/qgis.dtd’ ‘SYSTEM’&gt;     dataset\n\n\n       PROJCRS[“WGS 84 / Pseudo-Mercator”,BASEGEOGCRS[“WGS 84”,ENSEMBLE[“World Geodetic System 1984 ensemble”,MEMBER[“World Geodetic System 1984 (Transit)”],MEMBER[“World Geodetic System 1984 (G730)”],MEMBER[“World Geodetic System 1984 (G873)”],MEMBER[“World Geodetic System 1984 (G1150)”],MEMBER[“World Geodetic System 1984 (G1674)”],MEMBER[“World Geodetic System 1984 (G1762)”],MEMBER[“World Geodetic System 1984 (G2139)”],MEMBER[“World Geodetic System 1984 (G2296)”],ELLIPSOID[“WGS 84”,6378137,298.257223563,LENGTHUNIT[“metre”,1]],ENSEMBLEACCURACY[2.0]],PRIMEM[“Greenwich”,0,ANGLEUNIT[“degree”,0.0174532925199433]],ID[“EPSG”,4326]],CONVERSION[“Popular Visualisation Pseudo-Mercator”,METHOD[“Popular Visualisation Pseudo Mercator”,ID[“EPSG”,1024]],PARAMETER[“Latitude of natural origin”,0,ANGLEUNIT[“degree”,0.0174532925199433],ID[“EPSG”,8801]],PARAMETER[“Longitude of natural origin”,0,ANGLEUNIT[“degree”,0.0174532925199433],ID[“EPSG”,8802]],PARAMETER[“False easting”,0,LENGTHUNIT[“metre”,1],ID[“EPSG”,8806]],PARAMETER[“False northing”,0,LENGTHUNIT[“metre”,1],ID[“EPSG”,8807]]],CS[Cartesian,2],AXIS[“easting (X)”,east,ORDER[1],LENGTHUNIT[“metre”,1]],AXIS[“northing (Y)”,north,ORDER[2],LENGTHUNIT[“metre”,1]],USAGE[SCOPE[“Web mapping and visualisation.”],AREA[“World between 85.06°S and 85.06°N.”],BBOX[-85.06,-180,85.06,180]],ID[“EPSG”,3857]] +proj=merc +a=6378137 +b=6378137 +lat_ts=0 +lon_0=0 +x_0=0 +y_0=0 +k=1 +units=m +nadgrids=@null +wktext +no_defs 3857 3857 EPSG:3857 WGS 84 / Pseudo-Mercator merc EPSG:7030 false"
+  },
+  {
+    "objectID": "data/spatial data/Terranova_lakes.html",
+    "href": "data/spatial data/Terranova_lakes.html",
+    "title": "Salmon resource predictions",
+    "section": "",
+    "text": "&lt;!DOCTYPE qgis PUBLIC ‘http://mrcc.com/qgis.dtd’ ‘SYSTEM’&gt;     dataset\n\n\n       PROJCRS[“WGS 84 / Pseudo-Mercator”,BASEGEOGCRS[“WGS 84”,ENSEMBLE[“World Geodetic System 1984 ensemble”,MEMBER[“World Geodetic System 1984 (Transit)”],MEMBER[“World Geodetic System 1984 (G730)”],MEMBER[“World Geodetic System 1984 (G873)”],MEMBER[“World Geodetic System 1984 (G1150)”],MEMBER[“World Geodetic System 1984 (G1674)”],MEMBER[“World Geodetic System 1984 (G1762)”],MEMBER[“World Geodetic System 1984 (G2139)”],MEMBER[“World Geodetic System 1984 (G2296)”],ELLIPSOID[“WGS 84”,6378137,298.257223563,LENGTHUNIT[“metre”,1]],ENSEMBLEACCURACY[2.0]],PRIMEM[“Greenwich”,0,ANGLEUNIT[“degree”,0.0174532925199433]],ID[“EPSG”,4326]],CONVERSION[“Popular Visualisation Pseudo-Mercator”,METHOD[“Popular Visualisation Pseudo Mercator”,ID[“EPSG”,1024]],PARAMETER[“Latitude of natural origin”,0,ANGLEUNIT[“degree”,0.0174532925199433],ID[“EPSG”,8801]],PARAMETER[“Longitude of natural origin”,0,ANGLEUNIT[“degree”,0.0174532925199433],ID[“EPSG”,8802]],PARAMETER[“False easting”,0,LENGTHUNIT[“metre”,1],ID[“EPSG”,8806]],PARAMETER[“False northing”,0,LENGTHUNIT[“metre”,1],ID[“EPSG”,8807]]],CS[Cartesian,2],AXIS[“easting (X)”,east,ORDER[1],LENGTHUNIT[“metre”,1]],AXIS[“northing (Y)”,north,ORDER[2],LENGTHUNIT[“metre”,1]],USAGE[SCOPE[“Web mapping and visualisation.”],AREA[“World between 85.06°S and 85.06°N.”],BBOX[-85.06,-180,85.06,180]],ID[“EPSG”,3857]] +proj=merc +a=6378137 +b=6378137 +lat_ts=0 +lon_0=0 +x_0=0 +y_0=0 +k=1 +units=m +nadgrids=@null +wktext +no_defs 3857 3857 EPSG:3857 WGS 84 / Pseudo-Mercator merc EPSG:7030 false"
+  },
+  {
+    "objectID": "data/spatial data/Terranova_basin.html",
+    "href": "data/spatial data/Terranova_basin.html",
+    "title": "Salmon resource predictions",
+    "section": "",
+    "text": "&lt;!DOCTYPE qgis PUBLIC ‘http://mrcc.com/qgis.dtd’ ‘SYSTEM’&gt;     dataset\n\n\n       GEOGCRS[“WGS 84”,ENSEMBLE[“World Geodetic System 1984 ensemble”,MEMBER[“World Geodetic System 1984 (Transit)”],MEMBER[“World Geodetic System 1984 (G730)”],MEMBER[“World Geodetic System 1984 (G873)”],MEMBER[“World Geodetic System 1984 (G1150)”],MEMBER[“World Geodetic System 1984 (G1674)”],MEMBER[“World Geodetic System 1984 (G1762)”],MEMBER[“World Geodetic System 1984 (G2139)”],MEMBER[“World Geodetic System 1984 (G2296)”],ELLIPSOID[“WGS 84”,6378137,298.257223563,LENGTHUNIT[“metre”,1]],ENSEMBLEACCURACY[2.0]],PRIMEM[“Greenwich”,0,ANGLEUNIT[“degree”,0.0174532925199433]],CS[ellipsoidal,2],AXIS[“geodetic latitude (Lat)”,north,ORDER[1],ANGLEUNIT[“degree”,0.0174532925199433]],AXIS[“geodetic longitude (Lon)”,east,ORDER[2],ANGLEUNIT[“degree”,0.0174532925199433]],USAGE[SCOPE[“Horizontal component of 3D system.”],AREA[“World.”],BBOX[-90,-180,90,180]],ID[“EPSG”,4326]] +proj=longlat +datum=WGS84 +no_defs 3452 4326 EPSG:4326 WGS 84 longlat EPSG:7030 true"
   }
 ]
