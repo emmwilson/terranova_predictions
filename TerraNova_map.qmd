@@ -86,7 +86,7 @@ arrow <- "https://cdn.pixabay.com/photo/2013/07/12/17/54/arrow-152596_960_720.pn
 "<b>Segment discharge: </b> {TN_river$DIS_AV_CMS}<br/>",
 "<b>Segment stream order: </b> {TN_river$ORD_CLAS}<br/>",
 "<b>Segment Catchment: </b> {TN_river$UPLAND_SKM}<br/>") |> 
-
+ 
   lapply(htmltools::HTML)
 ```
 
