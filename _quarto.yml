@@ -11,7 +11,7 @@ website:
       - text: "Sliders"
         href: Sliders.qmd
       - text: "Map"
-        href: TerranNova_map.qmd 
+        href: TerraNova_map.qmd 
 
 format:
   html:
