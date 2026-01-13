@@ -91,12 +91,17 @@ TN_river$D50 <- (TN_river$tb/((ps-p)*g*t))*1000
   # colour palette for stream gradient
   gradient.pal <- colorNumeric(c("#00D4FF", "#020024"), domain = TN_river$sgr_dk_rav/10000, na.color = "transparent")  
   
-  # colour palette for D50
-  D50.pal <- colorNumeric(c("#e9c602", "#0E7329"), domain = TN_river$D50, na.color = "transparent")  
-
+  # colour palette for D50, with 16-64 green
   
+ D50.pal <- colorNumeric(c("#e9c602","#e9c602", "#e9c602","#FD602F"), domain = c(0,16,64,640), na.color = "transparent")
+ 
+D50.col <-  D50.pal(TN_river$D50)
+D50.col[TN_river$D50 >= 16 & TN_river$D50 <= 64] <- "#0E7329"
 
+D50.col.leg <- D50.pal(seq(0, 640, by = 16))
+D50.col.leg[seq(0, 640, by = 16) >= 16 & seq(0, 640, by = 16) <= 64] <- "#0E7329"
 
+D50.pal.leg <- colorNumeric(D50.col.leg, domain = c(0,640), na.color = "transparent")
 ```
 
 ```{r, popup_labels}
@@ -153,10 +158,10 @@ TN_map <- leaflet(width = 1900, height = 2100) |>
                 group = "Gradient", opacity = 1, bins = 7) |>
   
       ### D50
-      addPolylines(data = TN_river, color = ~D50.pal(TN_river$D50), weight = 3/TN_river$ORD_CLAS, opacity = 1, options = pathOptions(pane = "reaches"), group = "D50", popup = ~label_text) |>
-      addLegend(pal = D50.pal, values = TN_river$D50,
+      addPolylines(data = TN_river, color = D50.col, weight = 3/TN_river$ORD_CLAS, opacity = 1, options = pathOptions(pane = "reaches"), group = "D50", popup = ~label_text) |>
+      addLegend(pal = D50.pal.leg, values = TN_river$D50,
                 title = "D50 gravel size (mm)",
-                group = "D50", opacity = 1) |>
+                group = "D50", opacity = 1, bins = 20) |>
   
       ## lakes of the exploits
       addPolygons(data = TN_lakes, color = "#1f78b4", stroke = FALSE, fillOpacity = 0.7, options = pathOptions(pane = "lakes"), group = "TN") |>
