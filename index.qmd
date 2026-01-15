@@ -15,7 +15,7 @@ Use the top navigation bar to explore the following outputs:
 
 Slider predictions: about...
 
-Map predictions: about...
+Map predictions: xample of a map containing data required to create gravel predictions as well as predictions for gravel size (Terra Nova River, NL)
 
 ------------------------------------------------------------------------
 
